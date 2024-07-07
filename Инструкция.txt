@@ -1,0 +1,74 @@
+1) Запустите Docker
+
+2) Откройте проект "test" в любом редакторе кода
+
+3) Напишите в терминале следующие команды
+- cd app
+- docker-compose up -d --build
+
+4) Теперь можно посылать запросы)
+
+
+
+Примеры запросов:
+
+1) Создание пользователя через Postman
+
+POST http://localhost:8080?action=createUser
+
+Body: {
+"name": "Dнгшншe", 
+"email": "sdfnddddsdfdgb@example.com",
+"password": "123"
+}
+
+2) Авторизация
+
+POST http://localhost:8080?action=authenticate
+
+Body: {
+"email": "sdfnddddsdfdgb@example.com", 
+"password": "123"
+}
+
+3) Получение списка пользователей
+
+GET http://localhost:8080?action=getUsers&filter={"field":"id","operator":"<","value":5}&sort={"field":"name","order":"ASC"}
+
+Headers: [{"key":"Authorization","value":"Bearer <Токен который вы получили при авторизации>"}] 
+
+4) Удаление пользователя
+
+DELETE http://localhost:8080/?action=deleteUser
+
+Headers: [{"key":"Authorization","value":"Bearer <Токен который вы получили при авторизации>"}]
+
+Body: {
+    "id": <id пользователя которого нужно удалить>
+}
+
+5) Изменение пользователя
+
+PUT http://localhost:8080/?action=updateUser
+
+Headers: [{"key":"Authorization","value":"Bearer <Токен который вы получили при авторизации>"}]
+
+Body: {
+    "id": <id пользователя которого нужно удалить>
+    "name": "Новое имя",
+    "email": "Новый email"
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
